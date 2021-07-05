@@ -1,0 +1,41 @@
+/*
+Leetcode 766: Toeplitz Matrix
+Day-6
+*/
+#include<bits/stdc++.h>
+using namespace std;
+bool isToeplitzMatrix(vector<vector<int> > &matrix)
+{
+	int n = matrix.size();
+	int m = matrix[0].size();
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < m - 1; j++)
+		{
+			if (i < n && j < m && matrix[i][j] != matrix[i + 1][j + 1])
+				return false;
+		}
+	}
+	return true;
+}
+
+int main()
+{
+	int n, m, value;
+	cin >> n >> m;
+	vector<vector<int> > a(n, vector<int>(m));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cin >> value;
+			a[i][j] = value;
+		}
+	}
+	cout << endl;
+	if(isToeplitzMatrix(a))
+		cout << "special matrix"; 
+	else 
+		cout << "Non-special matrix";
+	return 0;
+}
